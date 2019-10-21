@@ -1,0 +1,27 @@
+#!/bin/bash
+. "/usr/bin/variables"
+
+###############################################################################
+# FUNCTIONS
+###############################################################################
+mount () {
+	# Mount GD if not already mounted.
+	if [ $(ps -ef | grep "rclone" | grep -v "grep" | wc -l) == "0" ]; then
+		echo "[ $(date $(printenv DATE_FORMAT)) ] Rclone mount: ${mount_dir}"
+		echo "rclone mount remote: ${mount_dir} $rclone_options"
+		rclone mount remote: ${mount_dir} $rclone_options &
+        sleep 10
+	else
+		echo "[ $(date $(printenv DATE_FORMAT)) ] Rclone mount point: ${mount_dir} already mounted."
+	fi
+}
+
+###############################################################################
+
+if pidof -o %PPID -x "$(basename "$0")"; then
+	echo "[ $(date $(printenv DATE_FORMAT)) ] Mount already in progress. Aborting."
+else
+	mount
+fi
+
+exit 0
