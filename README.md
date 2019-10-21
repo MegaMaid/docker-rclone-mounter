@@ -7,6 +7,7 @@ docker run -itd \
     --name rclone-mount \
     -v /my/hosts/storage/config:/config \
     -v /my/hosts/storage/mount:/mount:shared \
+    -v /my/hosts/storage/cache:/cache:shared \
     --privileged --cap-add=MKNOD --cap-add=SYS_ADMIN --device=/dev/fuse \
     megamaid/rclonemounter
 ```
@@ -43,6 +44,10 @@ chunk_size = 25M
 info_age = 2d
 chunk_total_size = 100G
 plex_token = my_plex_token
+db_path = /cache
+chunk_path = /cache
 ```
 
 The above example was generted by using RClone on my local machine and calling `rclone config` from the command line. The order seen above is the order the config was created in. The config was then copied out of `~/.config/rclone/rclone.conf`.
+
+**Note** that the lines `db_path = /cache` and `chunk_path = /cache` are created under the `rclone config` advanced setup for the cache type. You can also just manually add those lines later, but must be set to `/cache` to work with the container.
