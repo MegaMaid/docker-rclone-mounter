@@ -6,4 +6,4 @@ umask 022
 mount_command="/usr/bin/mount"
 
 echo "Started ${mount_command}"
-exec s6-setuidgid abc $mount_command
+exec $mount_command

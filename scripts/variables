@@ -4,9 +4,11 @@ log_dir="/log"
 _puid=$(printenv PUID)
 _pgid=$(printenv PGID)
 mount_dir="/mount"
-rclone_config="--config=/config/rclone.conf"
-rclone_options="${rclone_config} --attr-timeout 1s --allow-non-empty --allow-other --uid ${_puid:-911} --gid ${_pgid:-911}"
+rclone_options="--config=/config/rclone.conf"
+rclone_options="${rclone_options} --attr-timeout 1s --allow-non-empty --allow-other"
 
 if [ "$(printenv RCLONE_DISABLE_MEMORY_CACHE)" -eq "1" ]; then
-    rclone_options="${rclone_config} --cache-chunk-no-memory"
+    rclone_options="${rclone_options} --cache-chunk-no-memory"
 fi
+
+rclone_options="${rclone_options} --uid ${_puid:-911} --gid ${_pgid:-911}"
