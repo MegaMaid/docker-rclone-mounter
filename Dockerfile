@@ -16,7 +16,7 @@ RUN apt-get update && \
     mkdir -p /log && \
     mkdir -p /cache && \
     unzip /tmp/rclone-v1.51.0-linux-amd64.zip -d /tmp/ && \
-    mv /tmp/rclone-v1.51.0-linux-amd64.zip/rclone /usr/local/bin && \
+    mv /tmp/rclone-v1.51.0-linux-amd64/rclone /usr/local/bin && \
     chmod a+x /usr/local/bin/rclone
 
 RUN chmod a+x /usr/bin/* && \
