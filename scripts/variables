@@ -5,7 +5,8 @@ _puid=$(printenv PUID)
 _pgid=$(printenv PGID)
 mount_dir="/mount"
 rclone_options="--config=/config/rclone.conf"
-rclone_options="${rclone_options} --attr-timeout 1s --allow-non-empty --allow-other"
+rclone_options="${rclone_options} --attr-timeout 1s --allow-non-empty --allow-other "
+rclone_options="${rclone_options} --drive-stop-on-upload-limit --fast-list "
 
 if [ "$(printenv RCLONE_DISABLE_MEMORY_CACHE)" -eq "1" ]; then
     rclone_options="${rclone_options} --cache-chunk-no-memory"
