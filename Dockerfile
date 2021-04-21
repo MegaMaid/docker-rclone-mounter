@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:18.04
 
 ADD https://github.com/just-containers/s6-overlay/releases/download/v1.21.8.0/s6-overlay-amd64.tar.gz /tmp/
 ADD https://github.com/rclone/rclone/releases/download/v1.55.0/rclone-v1.55.0-linux-amd64.zip /tmp/
