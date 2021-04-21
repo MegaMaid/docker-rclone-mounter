@@ -1,7 +1,7 @@
 FROM ubuntu
 
 ADD https://github.com/just-containers/s6-overlay/releases/download/v1.21.8.0/s6-overlay-amd64.tar.gz /tmp/
-ADD https://github.com/rclone/rclone/releases/download/v1.51.0/rclone-v1.51.0-linux-amd64.zip /tmp/
+ADD https://github.com/rclone/rclone/releases/download/v1.55.0/rclone-v1.55.0-linux-amd64.zip /tmp/
 
 COPY scripts/* /usr/bin/
 COPY root /
@@ -15,8 +15,8 @@ RUN apt-get update && \
     mkdir -p /mount && \
     mkdir -p /log && \
     mkdir -p /cache && \
-    unzip /tmp/rclone-v1.51.0-linux-amd64.zip -d /tmp/ && \
-    mv /tmp/rclone-v1.51.0-linux-amd64/rclone /usr/local/bin && \
+    unzip /tmp/rclone-v1.55.0-linux-amd64.zip -d /tmp/ && \
+    mv /tmp/rclone-v1.55.0-linux-amd64/rclone /usr/local/bin && \
     chmod a+x /usr/local/bin/rclone
 
 RUN chmod a+x /usr/bin/* && \
