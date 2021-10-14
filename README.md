@@ -33,19 +33,6 @@ filename_encryption = standard
 directory_name_encryption = true
 password = the_password_hash
 password2 = the_password_2_hash
-
-[remote]
-type = cache
-remote = gdrive-decrypted:/
-plex_url = https://my.plex.host
-plex_username = my_plex_username
-plex_password = my_plex_password_hash
-chunk_size = 25M
-info_age = 2d
-chunk_total_size = 100G
-plex_token = my_plex_token
-db_path = /cache
-chunk_path = /cache
 ```
 
 The above example was generted by using RClone on my local machine and calling `rclone config` from the command line. The order seen above is the order the config was created in. The config was then copied out of `~/.config/rclone/rclone.conf`.

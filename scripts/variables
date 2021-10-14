@@ -4,9 +4,15 @@ log_dir="/log"
 _puid=$(printenv PUID)
 _pgid=$(printenv PGID)
 mount_dir="/mount"
-rclone_options="--config=/config/rclone.conf"
-rclone_options="${rclone_options} --attr-timeout 1s --allow-non-empty --allow-other "
-rclone_options="${rclone_options} --drive-stop-on-upload-limit --fast-list "
+rclone_options="--config=/config/rclone.conf --daemon --user-agent megamaid"
+rclone_options="${rclone_options} --attr-timeout 10s --allow-non-empty --allow-other "
+rclone_options="${rclone_options} --drive-stop-on-upload-limit --fast-list --drive-chunk-size 256M "
+rclone_options="${rclone_options} --dir-cache-time 168h --poll-interval 5m0s --buffer-size 256M "
+rclone_options="${rclone_options} --vfs-read-chunk-size 16M --vfs-read-chunk-size-limit 512M "
+rclone_options="${rclone_options} --cache-dir /cache --vfs-cache-mode full --no-modtime "
+rclone_options="${rclone_options} --vfs-cache-max-age 1h --vfs-cache-max-size 500G "
+rclone_options="${rclone_options} --vfs-cache-poll-interval 30m --vfs-write-back 1m "
+rclone_options="${rclone_options} --max-read-ahead 512M "
 
 if [ "$(printenv RCLONE_DISABLE_MEMORY_CACHE)" -eq "1" ]; then
     rclone_options="${rclone_options} --cache-chunk-no-memory"
