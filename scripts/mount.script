@@ -11,8 +11,8 @@ mount () {
 		echo "rclone mount gdrive-decrypted: ${mount_dir} $rclone_options"
 		rclone mount gdrive-decrypted: ${mount_dir} $rclone_options
         sleep 10
-	else
-		echo "[ $(date $(printenv DATE_FORMAT)) ] Rclone mount point: ${mount_dir} already mounted."
+	# else
+		# echo "[ $(date $(printenv DATE_FORMAT)) ] Rclone mount point: ${mount_dir} already mounted."
 	fi
 }
 
